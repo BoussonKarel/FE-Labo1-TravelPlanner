@@ -7,7 +7,7 @@ const continents = {
 },
 endpoint = 'https://restcountries.eu/rest/v2';
 
-let countryHolder;
+let countryHolder, regionRadioButtons;
 
 const renderCountries = (countries) => {
     let countriesHTML = '';
@@ -42,10 +42,20 @@ const getCountries = async (continent) => {
     renderCountries(data);
 }
 
+const enableNavigation = () => {
+    for (const radio of regionRadioButtons) {
+        radio.addEventListener('change', function() {
+            getCountries(continents[this.value]);
+        });
+    }
+}
+
 const getDOMElements = () => {
     countryHolder = document.querySelector('.js-countries');
+    regionRadioButtons = document.querySelectorAll('.js-region-radio');
 
     getCountries(continents.europe);
+    enableNavigation();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
