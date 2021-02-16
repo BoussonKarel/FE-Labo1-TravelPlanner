@@ -131,6 +131,7 @@ body {
 .c-countries {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+    align-items: center;
     gap: 2rem;
     padding: 2rem;
 }
