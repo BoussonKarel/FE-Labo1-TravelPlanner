@@ -63,6 +63,7 @@ body {
 
     /*  appearance */
     background: var(--theme-color-xxxxx-dark);
+    box-shadow: 0 1px 4px 1px var(--theme-color-xxx-light);
 
     /*  other */
 }
@@ -134,8 +135,33 @@ body {
 
 
 /* COUNTER */
-.c-counter {}
-.c-counter__current {}
+.c-counter {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 0 2rem;
+    margin-right: -2rem;
+
+    text-align: right;
+
+    background-color: var(--theme-color-xxxxx-light);
+    color: var(--theme-color-xxxxx-dark);
+    
+}
+.c-counter__description {
+
+}
+
+.c-counter__ratios {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.c-counter__current {
+    color: var(--theme-color-base);
+}
 
 /* COUNTRIES */
 .c-countries {
