@@ -3,7 +3,7 @@
     /* Default native font stack */
     --font-stack-body: -apple-system, BlinkMacSystemFont, 'Segoe UI' , 'Helvetica', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
 
-    --theme-color-xxxxx-light: #f2ffff;
+    /* --theme-color-xxxxx-light: #f2ffff;
     --theme-color-xxxx-light: #ebfaff;
     --theme-color-xxx-light: #e3eeff;
     --theme-color-xx-light: #c4c0ff;
@@ -15,7 +15,24 @@
     --theme-color-xx-dark: #be1db7;
     --theme-color-xxx-dark: #9f0da3;
     --theme-color-xxxx-dark: #770087;
-    --theme-color-xxxxx-dark: #3a0141;
+    --theme-color-xxxxx-dark: #3a0141; */
+
+    --theme-color-hue: 330;
+    --theme-color-xxxxx-light: hsl(var(--theme-color-hue), 100%, 97.5%);
+    --theme-color-xxxx-light: hsl(var(--theme-color-hue), 100%, 96.1%);
+    --theme-color-xxx-light: hsl(var(--theme-color-hue), 100%, 94.5%);
+    --theme-color-xx-light: hsl(var(--theme-color-hue), 100%, 87.6%);
+    --theme-color-x-light: hsl(var(--theme-color-hue), 100%, 81.6%);
+    --theme-color-light: hsl(var(--theme-color-hue), 100%, 76.9%);
+    --theme-color-base: hsl(var(--theme-color-hue), 100%, 70%);
+    --theme-color-dark: hsl(var(--theme-color-hue), 100%, 60.8%);
+    --theme-color-x-dark: hsl(var(--theme-color-hue), 100%, 52%);
+    --theme-color-xx-dark: hsl(var(--theme-color-hue), 100%, 42.9%);
+    --theme-color-xxx-dark: hsl(var(--theme-color-hue), 100%, 34%);
+    --theme-color-xxxx-dark: hsl(var(--theme-color-hue), 100%, 26.5%);
+    --theme-color-xxxxx-dark: hsl(var(--theme-color-hue), 100%, 12.9%);
+
+    --global-border-bottom-size: .5rem;
 }
 
 html {
@@ -41,13 +58,14 @@ body {
 
 /* APP */
 .c-app {
-    --local-border-bottom-size: .5rem;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
-    min-height: calc(100vh - var(--local-border-bottom-size));
+    min-height: calc(100vh - var(--global-border-bottom-size));
 
-    border-bottom: var(--local-border-bottom-size) solid var(--theme-color-base);
+    background: var(--theme-color-xxxxx-light);
+
+    border-bottom: var(--global-border-bottom-size) solid var(--theme-color-base);
 }
 
 /* HEADER */
@@ -63,6 +81,7 @@ body {
 
     /*  appearance */
     background: var(--theme-color-xxxxx-dark);
+    box-shadow: 0 1px 4px 1px var(--theme-color-xxx-light);
 
     /*  other */
 }
@@ -107,13 +126,23 @@ body {
 
 .c-nav-list__item {
     display: inline-block;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     padding: 1rem 0;
+    margin: 0 .5rem;
+    cursor: pointer;
 
     border-bottom: 2px solid transparent;
 }
 
 .c-nav-list__item:hover {
+    border-color: var(--theme-color-x-dark);
+}
+
+.c-nav-list__input:checked + .c-nav-list__item {
+    border-color: var(--theme-color-base);
+}
+
+.c-nav-list__input:checked + .c-nav-list__item {
     border-color: var(--theme-color-base);
 }
 
@@ -124,13 +153,39 @@ body {
 
 
 /* COUNTER */
-.c-counter {}
-.c-counter__current {}
+.c-counter {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding-left: 2rem;
+    /* margin-right: -1rem; */
+
+    text-align: right;
+
+    background-color: var(--theme-color-xxxxx-light);
+    color: var(--theme-color-xxxxx-dark);
+    
+}
+.c-counter__description {
+
+}
+
+.c-counter__ratios {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.c-counter__current {
+    color: var(--theme-color-base);
+}
 
 /* COUNTRIES */
 .c-countries {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+    grid-template-rows: auto; /* todo: make own height */
     align-items: center;
     gap: 2rem;
     padding: 2rem;
@@ -181,4 +236,126 @@ body {
 .c-country__native-name {
     opacity: 0.5;
     font-size: 1.1rem;
+}
+
+/* NOTIFICATIONS */
+
+/* Niet super goed, maar scrollbar kan weg */
+.c-notifications::-webkit-scrollbar {
+    display: none; /* Chrome */
+}
+.c-notifications {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* FireFox */
+}
+
+.c-notifications {
+    position: absolute;
+    right: 0;
+    top: 4rem;
+    max-width: 26rem;
+    bottom: var(--global-border-bottom-size);
+
+    padding-bottom: 2rem;
+
+    overflow-y: auto;
+}
+
+.c-notification {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+
+    background: white;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 0.25rem;
+}
+
+.c-notification + .c-notification {
+    margin-top: 2rem;
+}
+
+.c-notifcation__message {
+    font-size: 1.1rem;
+}
+
+.c-notification__button {
+    --local-notification-button-size: 3rem;
+    all: unset; /* Alle default styles verwijderen, LET OP: moet bovenaan */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    
+    /* width: var(--local-notification-button-size);
+    height: var(--local-notification-button-size); */
+
+    font-size: 1.7rem;
+    line-height: 1;
+
+    border-radius: 50%;
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.c-notification__button:hover {
+    background: var(--theme-color-xx-light);
+}
+
+.c-notification__icon {
+    width: 2rem;
+    height: 2rem;
+    stroke-width: 2px;
+    stroke: var(--theme-color-xxxxx-dark);
+}
+
+.c-settings {
+    position: absolute;
+    bottom: 0rem;
+    left: 2rem;
+}
+
+.c-settings__button {
+    all: unset;
+
+    width: 2rem;
+    height: 2rem;
+    padding: 1rem;
+
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+
+    background: var(--theme-color-base);
+}
+
+.c-settings__icon {
+    stroke: var(--theme-color-xxxxx-light);
+}
+
+.c-settings__body {
+    display: flex;
+    flex-direction: column;
+    background: var(--theme-color-base);
+    color: var(--theme-color-xxxxx-light);
+    padding: 1rem;
+
+    border-top-right-radius: 1rem;
+}
+
+.c-settings__label {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.u-will-fade {
+    opacity: 1;
+    will-change: opacity;
+
+    transition: opacity 400ms ease-in-out;
+}
+
+.u-fading-out {
+    opacity: 0;
 }
