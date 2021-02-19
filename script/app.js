@@ -59,6 +59,14 @@ const saveCountry = (alpha2Code, add) => {
     }
 }
 
+const showMessage = (countryElement, added) => {
+    const currentCountry = countryElement.parentNode.querySelector('.c-country__name').innerText;
+    
+    let message = (added) ? `You have added ${currentCountry} to the places you would like to visit.` : `You are no longer interested in visiting ${currentCountry}`;
+
+    showNotification(message, null);
+}
+
 const listenToSavedCountries = () => {
     const countries = document.querySelectorAll('.js-country-input');
     console.log({countries});
@@ -67,6 +75,8 @@ const listenToSavedCountries = () => {
         country.addEventListener('change', function() {
             saveCountry(this.id, this.checked);
             setCountriesCounter(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)));
+
+            showMessage(this, this.checked)
         });
     }
 }
@@ -75,9 +85,9 @@ const searchLocalStorageFor = (alpha2Code) => {
     const localData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     const selectedRegion = document.querySelector('.js-region-radio:checked').value;
 
-    // if (!localData || !localData[selectedRegion]) return;
+    if (!localData || !localData[selectedRegion]) return;
 
-    if (localData && localData[selectedRegion][alpha2Code]) {
+    if (localData[selectedRegion][alpha2Code]) {
         return 'checked';
     }
 }

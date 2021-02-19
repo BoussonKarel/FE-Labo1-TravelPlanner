@@ -31,6 +31,8 @@
     --theme-color-xxx-dark: hsl(var(--theme-color-hue), 100%, 34%);
     --theme-color-xxxx-dark: hsl(var(--theme-color-hue), 100%, 26.5%);
     --theme-color-xxxxx-dark: hsl(var(--theme-color-hue), 100%, 12.9%);
+
+    --global-border-bottom-size: .5rem;
 }
 
 html {
@@ -56,13 +58,14 @@ body {
 
 /* APP */
 .c-app {
-    --local-border-bottom-size: .5rem;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
-    min-height: calc(100vh - var(--local-border-bottom-size));
+    min-height: calc(100vh - var(--global-border-bottom-size));
 
-    border-bottom: var(--local-border-bottom-size) solid var(--theme-color-base);
+    background: var(--theme-color-xxxxx-light);
+
+    border-bottom: var(--global-border-bottom-size) solid var(--theme-color-base);
 }
 
 /* HEADER */
@@ -123,7 +126,7 @@ body {
 
 .c-nav-list__item {
     display: inline-block;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     padding: 1rem 0;
     margin: 0 .5rem;
     cursor: pointer;
@@ -233,4 +236,76 @@ body {
 .c-country__native-name {
     opacity: 0.5;
     font-size: 1.1rem;
+}
+
+/* NOTIFICATIONS */
+
+/* Niet super goed, maar scrollbar kan weg */
+.c-notifications::-webkit-scrollbar {
+    display: none; /* Chrome */
+}
+.c-notifications {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* FireFox */
+}
+
+.c-notifications {
+    position: absolute;
+    right: 0;
+    top: 4rem;
+    max-width: 26rem;
+    bottom: var(--global-border-bottom-size);
+
+    padding-bottom: 2rem;
+
+    overflow-y: auto;
+}
+
+.c-notification {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+
+    background: white;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 0.25rem;
+}
+
+.c-notification + .c-notification {
+    margin-top: 2rem;
+}
+
+.c-notifcation__message {
+    font-size: 1.1rem;
+}
+
+.c-notification__button {
+    --local-notification-button-size: 3rem;
+    all: unset; /* Alle default styles verwijderen, LET OP: moet bovenaan */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    
+    /* width: var(--local-notification-button-size);
+    height: var(--local-notification-button-size); */
+
+    font-size: 1.7rem;
+    line-height: 1;
+
+    border-radius: 50%;
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.c-notification__button:hover {
+    background: var(--theme-color-xx-light);
+}
+
+.c-notification__icon {
+    width: 2rem;
+    height: 2rem;
+    stroke-width: 2px;
+    stroke: var(--theme-color-xxxxx-dark);
 }
