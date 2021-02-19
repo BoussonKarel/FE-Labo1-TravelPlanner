@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="./style/normalize.css">
     <link rel="stylesheet" href="./style/screen.css">
 
+    <script defer src="./script/notifications.js"></script>
+    <script defer src="./script/theme.js"></script>
     <script defer src="./script/api.js"></script>
     <script defer src="./script/app.js"></script>
 </head>
@@ -44,9 +46,33 @@
                 <p class="c-counter__ratios"><span class="c-counter__current js-countries-visited">49</span>/250</p>
             </div>
         </header>
+
         <article class="c-countries js-countries">
             The app is loading...
         </article>
+
+        <div class="c-settings">
+            <button class="c-settings__button">
+                <svg class="c-settings__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </button>
+
+            <div class="c-settings__body">
+                <label class="c-settings__label" for="themeColor">
+                    Theme color
+                    
+                </label>
+                <input class="c-settings__input js-color-slider" type="range" min="0" max="360" id="themeColor" name="themeColor" class="js-color-slider">
+            </div>
+        </div>
+
+        <aside class="c-notifications js-notifications">
+            <!-- <div class="c-notification">
+                <p class="c-notification__message js-message">You have added Belgium to the places you want to visit.</p>
+                <button class="c-notification__button js-notification-button">
+                    <svg class="c-notification__icon" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="arcs"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div> -->
+        </aside>
     </main>
 </body>
 </html>
