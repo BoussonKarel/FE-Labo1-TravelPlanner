@@ -3,7 +3,7 @@
     /* Default native font stack */
     --font-stack-body: -apple-system, BlinkMacSystemFont, 'Segoe UI' , 'Helvetica', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
 
-    --theme-color-xxxxx-light: #f2ffff;
+    /* --theme-color-xxxxx-light: #f2ffff;
     --theme-color-xxxx-light: #ebfaff;
     --theme-color-xxx-light: #e3eeff;
     --theme-color-xx-light: #c4c0ff;
@@ -15,7 +15,22 @@
     --theme-color-xx-dark: #be1db7;
     --theme-color-xxx-dark: #9f0da3;
     --theme-color-xxxx-dark: #770087;
-    --theme-color-xxxxx-dark: #3a0141;
+    --theme-color-xxxxx-dark: #3a0141; */
+
+    --theme-color-hue: 330;
+    --theme-color-xxxxx-light: hsl(var(--theme-color-hue), 100%, 97.5%);
+    --theme-color-xxxx-light: hsl(var(--theme-color-hue), 100%, 96.1%);
+    --theme-color-xxx-light: hsl(var(--theme-color-hue), 100%, 94.5%);
+    --theme-color-xx-light: hsl(var(--theme-color-hue), 100%, 87.6%);
+    --theme-color-x-light: hsl(var(--theme-color-hue), 100%, 81.6%);
+    --theme-color-light: hsl(var(--theme-color-hue), 100%, 76.9%);
+    --theme-color-base: hsl(var(--theme-color-hue), 100%, 70%);
+    --theme-color-dark: hsl(var(--theme-color-hue), 100%, 60.8%);
+    --theme-color-x-dark: hsl(var(--theme-color-hue), 100%, 52%);
+    --theme-color-xx-dark: hsl(var(--theme-color-hue), 100%, 42.9%);
+    --theme-color-xxx-dark: hsl(var(--theme-color-hue), 100%, 34%);
+    --theme-color-xxxx-dark: hsl(var(--theme-color-hue), 100%, 26.5%);
+    --theme-color-xxxxx-dark: hsl(var(--theme-color-hue), 100%, 12.9%);
 }
 
 html {
@@ -63,6 +78,7 @@ body {
 
     /*  appearance */
     background: var(--theme-color-xxxxx-dark);
+    box-shadow: 0 1px 4px 1px var(--theme-color-xxx-light);
 
     /*  other */
 }
@@ -134,13 +150,39 @@ body {
 
 
 /* COUNTER */
-.c-counter {}
-.c-counter__current {}
+.c-counter {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding-left: 2rem;
+    /* margin-right: -1rem; */
+
+    text-align: right;
+
+    background-color: var(--theme-color-xxxxx-light);
+    color: var(--theme-color-xxxxx-dark);
+    
+}
+.c-counter__description {
+
+}
+
+.c-counter__ratios {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.c-counter__current {
+    color: var(--theme-color-base);
+}
 
 /* COUNTRIES */
 .c-countries {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+    grid-template-rows: auto; /* todo: make own height */
     align-items: center;
     gap: 2rem;
     padding: 2rem;
