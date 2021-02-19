@@ -309,3 +309,53 @@ body {
     stroke-width: 2px;
     stroke: var(--theme-color-xxxxx-dark);
 }
+
+.c-settings {
+    position: absolute;
+    bottom: 0rem;
+    left: 2rem;
+}
+
+.c-settings__button {
+    all: unset;
+
+    width: 2rem;
+    height: 2rem;
+    padding: 1rem;
+
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+
+    background: var(--theme-color-base);
+}
+
+.c-settings__icon {
+    stroke: var(--theme-color-xxxxx-light);
+}
+
+.c-settings__body {
+    display: flex;
+    flex-direction: column;
+    background: var(--theme-color-base);
+    color: var(--theme-color-xxxxx-light);
+    padding: 1rem;
+
+    border-top-right-radius: 1rem;
+}
+
+.c-settings__label {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.u-will-fade {
+    opacity: 1;
+    will-change: opacity;
+
+    transition: opacity 400ms ease-in-out;
+}
+
+.u-fading-out {
+    opacity: 0;
+}
