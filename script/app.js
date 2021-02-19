@@ -75,9 +75,9 @@ const searchLocalStorageFor = (alpha2Code) => {
     const localData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     const selectedRegion = document.querySelector('.js-region-radio:checked').value;
 
-    if (!localData || !localData[selectedRegion]) return;
+    // if (!localData || !localData[selectedRegion]) return;
 
-    if (localData[selectedRegion][alpha2Code]) {
+    if (localData && localData[selectedRegion][alpha2Code]) {
         return 'checked';
     }
 }
